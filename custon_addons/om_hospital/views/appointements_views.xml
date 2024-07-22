@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <record id="view_hospital_appointements_tree" model="ir.ui.view">
+        <field name="name">hospital.appointements.tree</field>
+        <field name="model">hospital.appointement</field>
+        <field name="arch" type="xml">
+            <tree string="appointements">
+                <field name="reference"/>
+                <field name="patient_id"/>
+                <field name="date_appointement" optional="show"/>
+            </tree>
+        </field>
+
+    </record>
+    <record id="view_hospital_appointements_form" model="ir.ui.view">
+        <field name="name">hospital.appointements.form</field>
+        <field name="model">hospital.appointement</field>
+        <field name="arch" type="xml">
+            <form string="Appointements">
+                <header>
+                   <button name="action_confirm" type="object" string="Confirm" state="draft" />
+                    <button name="action_ongoing" type="object" string="Ongoing"  />
+                    <field name="state" widget="statusbar" options="{'clickable':'1'}"/>
+                </header>
+                <sheet>
+                    <group>
+                    <group>
+                        <field name="reference" readonly="True"/>
+                        <field name="patient_id"/>
+                        <field name="date_appointement"/>
+                    </group>
+                    <group>
+                        <field name="note"/>
+                    </group>
+                </group>
+
+                    <notebook>
+                        <page name="appointement_lines" string="Lines">
+                           <field name="appointement_line_ids">
+                         <tree>
+                                <field name="product_id"/>
+                                <field name="qty"/>
+                            </tree>
+                    </field>
+                        </page>
+                    </notebook>x
+
+
+
+
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+
+    </record>
+    <record id="action_hospital_appointements" model="ir.actions.act_window">
+        <field name="name">Appointements</field>
+        <field name="res_model">hospital.appointement</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+               <p class="o_view_nocontent_smiling_face">
+                   create new appointements
+               </p>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <menuitem id='menu_hospital_root'
+    name='HPS'
+    />
+    <menuitem id='menu_frontdesk'
+    name='Front Desk'
+    parent="menu_hospital_root"
+    />
+    <menuitem id='menu_patients'
+    name='Patients'
+    parent="menu_frontdesk"
+    action="action_hospital_patients"
+    />
+    <menuitem id='menu_readonly_patients'
+    name='View Patients'
+    parent="menu_frontdesk"
+    action="action_hospital_readonly_patients"
+    />
+     <menuitem id='menu_appointements'
+    name='Appointements'
+    parent="menu_frontdesk"
+    action="action_hospital_appointements"
+    />
+    <menuitem id='menu_appointements_lines'
+    name='Appointements lines'
+    parent="menu_frontdesk"
+    action="action_hospital_appointements_lines"
+    />
+    <menuitem id='menu_configuration'
+    name='Configuration'
+    parent="menu_hospital_root"
+    />
+    <menuitem id='menu_patient_tag'
+    name='Tags'
+    parent="menu_configuration"
+    action="action_patient_tag"
+    />
+</odoo>
